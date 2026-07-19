@@ -1,0 +1,78 @@
+{% extends "main/base.html" %}
+{% block content %}
+    <style>
+        body{
+             background-color: rgb(5, 238, 5);
+        }
+
+        .backg{
+            background-color: rgb(243, 230, 194);
+            width: 1000px;
+            height: 1330px;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 10px solid black;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 100px;
+            position: relative;
+        }
+
+        form{
+            position: absolute;
+            top: 190px;
+            left: 340px;
+            transform: scale(2.7);
+            transform-origin: top center;
+        }
+
+        .name{
+            margin-bottom: 50px;
+        }
+
+        .rating{
+            margin-bottom: 50px;
+        }
+
+        .errorlist{
+            color: red;
+            font-size: 6px;
+            width: 200px;
+            margin: 5px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+    </style>
+<div class="backg">
+    <h1>{{ recipe.title }}</h1>
+    <form method="POST">
+    {% csrf_token %}
+
+    <div class="name">
+        <label>Name</label><br>
+        {{ form.name }}
+        {{ form.name.errors }}
+    </div>
+
+    <div class="rating">
+        <label>Rating</label><br>
+        {{ form.rating }}
+    </div>
+
+    <div class="comment">
+        <label>Comment</label><br>
+        {{ form.comment }}
+        {{ form.comment.errors }}
+    </div>
+
+    <button type="submit">
+        SUBMIT REVIEW
+    </button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "main/base.html" %}
+{% block content %}
+    <style>
+        body{
+            padding-top: 150px;
+            margin: 0;
+            min-height: 100vh;
+
+            background-image:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.5),
+                transparent
+            ),
+            url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a4/8c/53/kino-food-hall.jpg");
+            background-size: cover;
+
+            color: beige
+        }
+
+        h1{
+            text-align: center;
+            font-size: 150px;
+            font-style: italic;
+            font-weight: 100;
+            text-shadow: 5px 5px 14px black;
+            margin-top: -40px;
+        }
+
+        p{
+            text-align: center;
+            font-size: 50px;
+            font-weight: 70;
+            text-shadow: 3px 3px 10px black;
+            margin-top: -60px;
+        }
+
+        h4{
+            text-align: center;
+            font-size: 35px;
+            font-weight: 60;
+            text-shadow: 3px 3px 10px black;
+            margin-top: -20px;
+        }
+
+        .categories1{
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+        }
+
+        .categories1 a{
+            text-align: center;
+            text-decoration: none;
+            color: beige;
+            transition: transform 0.3s ease;
+        }
+
+        .categories1 img{
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border: 4px solid rgb(57, 61, 36);
+            background: rgba(255,255,255,0.12);
+            border-radius: 50%;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .categories1 h3{
+            margin-top: 180px;
+            text-shadow: 2px 2px 8px rgb(68, 105, 19);
+            font-size: 25px;
+        }
+
+        .categories1 img:hover{
+            transform: scale(1.1)
+        }
+
+        .categories1 a:hover{
+            transform: scale(1.3)
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+    </style>
+
+<h1>WELCOME TO DISHLY</h1>
+<p>HERE YOU WILL DISCOVER FOOD RECIPES THAT WILL CHANGE YOUR LIFE!</p>
+<h4>PLEASE CHOOSE A FOOD CATEGORY TO CONTINUE...</h4>
+
+<div class="categories1">
+    {% for category in categorys %}
+        <a href="{% url 'category' category.id %}">
+            <h3>{{ category.name }}</h3>
+            <img src="{{ category.image.url }}">
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

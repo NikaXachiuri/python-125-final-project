@@ -1,0 +1,94 @@
+{% extends "main/base.html" %}
+{% block content %}
+    <style>
+        body{
+            background-color: bisque;
+        }
+
+        .rew{
+            border: 2px solid rgb(247, 185, 109);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            background-color: aliceblue;
+            width: 1200px;
+            height: 600px;
+            top: 100px;
+            left: 50%;
+            position: relative;
+            transform: translateX(-50%);
+            word-break: normal;
+            overflow-wrap: break-word;
+            margin-bottom: 150px;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 100px;
+        }
+
+        h2{
+            text-align: center;
+            font-size: 35px;
+        }
+
+        .n{
+            font-size: 25px;
+            position: relative;
+            position: absolute;
+            left: 50px;
+            white-space: pre-line;
+        }
+
+        .r{
+            font-size: 30px;
+            position: relative;
+            position: absolute;
+            left: 50px;
+            top: 150px;
+        }
+
+        .c{
+            font-size: 30px;
+            position: relative;
+            position: absolute;
+            margin-left: 50px;
+            margin-top: 180px;
+            max-width: 1100px;
+            overflow-wrap: break-word;
+        }
+
+        .ed{
+            left: 1000px;
+            top: 50px;
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            background-color: gold;
+        }
+
+        .de{
+            left: 1000px;
+            top: 100px;
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            background-color: red;
+        }
+    </style>
+
+<h1>REVIEWS</h1>
+{% for review in reviews%}
+    <div class="rew">
+        <h2>{{ review.recipe.title }}</h2>
+        <h4 class="n">NAME: {{ review.name }}</h4>
+        <h4 class="r">RATING: {{ review.rating }}⭐</h4>
+        <h4 class="c">COMMENT: {{ review.comment }}</h4>
+        <a href="{% url 'edit' review.id %}">
+            <button class="ed">EDIT</button>
+        </a>
+
+        <a href="{% url 'dele' review.id %}">
+            <button class="de">DELETE</button>
+        </a>
+    </div>
+{% endfor %}
+{% endblock %}

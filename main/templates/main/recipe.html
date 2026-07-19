@@ -1,0 +1,197 @@
+{% extends "main/base.html" %}
+{% block content %}
+    <style>
+        body{
+            padding-top: 0px;
+            background-position: center -500px;
+            background-image:
+            linear-gradient(
+                rgba(0, 0, 0, 0.8),
+                rgba(0, 0, 0, 0.8)
+            ),
+            url("https://toohotel.com/wp-content/uploads/2025/06/TOO_restaurant_Panoramique_vue_Paris_nuit_v2.jpg");
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .recipe{
+            position: relative;
+            width: 800px;
+            height: 1200px;
+            display: block;
+            margin: 0 auto;
+            transform: translateY(50px);
+        }
+
+        .paper{
+            position: relative;
+            width: 450px;
+            height: 350px;
+            display: block;
+            margin: 0 auto;
+            top: -400px;
+            -webkit-mask-image: radial-gradient(
+            circle,
+            black 50%,
+            transparent 80%
+            );
+            mask-image: radial-gradient(
+            to bottom,
+            transparent,
+            circle,
+            black 50%,
+            transparent 90%
+           );
+       }
+
+       h1{
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        font-style: italic;
+        font-size: 80px;
+       }
+
+       h3{
+        white-space: pre-line;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        font-style: italic;
+        font-size: 20px;
+       }
+
+       .ing{
+        white-space: pre-line;
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1550px;
+        font-style: italic;
+        font-size: 20px;
+        top: 260px;
+       }
+
+       .cal{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1900px;
+        font-style: italic;
+        font-size: 32px;
+        top: 260px;
+       }
+
+       .fat{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1900px;
+        font-style: italic;
+        font-size: 50px;
+        top: 510px;
+       }
+
+       .car{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1900px;
+        font-style: italic;
+        font-size: 50px;
+        top: 410px;
+       }
+
+       .pro{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1900px;
+        font-style: italic;
+        font-size: 50px;
+        top: 310px;
+       }
+
+       .health{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        left: 1990px;
+        font-style: italic;
+        font-size: 20px;
+        top: 710px;
+       }
+
+       .calorie{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        font-style: italic;
+        font-size: 20px;
+        top: 710px;
+       }
+
+       .easy{
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        font-style: italic;
+        left: 1450px;
+        font-size: 20px;
+        top: 710px;
+       }
+
+       .horizontal{
+        background-color: black;
+        height: 2px;
+        width: 760px;
+        left: 1340px;
+        position: relative;
+        position: absolute;
+        z-index: 2;
+        top: 700px;
+       }
+
+
+    </style>
+
+<div>
+    <img class="recipe" src="https://static.vecteezy.com/system/resources/thumbnails/012/981/788/small/old-parchment-paper-sheet-vintage-aged-or-texture-background-png.png">
+    <img class="paper" src="{{ recipe.image.url }}">
+    <h1>{{ recipe.title }}</h1>
+    <h3>{{ recipe.description }}</h3>
+    <h4 class="ing">{{ recipe.ingredient }}</h4>
+    <h4 class="fat">FATS: {{ recipe.fat }}G</h4>
+    <h4 class="car">CARBS: {{ recipe.carb }}G</h4>
+    <h4 class="pro">PROTEIN: {{ recipe.protein }}G</h4>
+    <h4 class="cal">CALORIES: {{ recipe.calories }}KCAL</h4>
+    <h5 class="health">It's healthy: {{ recipe.is_healthy }}</h5>
+    <h5 class="calorie">It contains low calories: {{ recipe.is_low_calorie }}</h5>
+    <h5 class="easy">It's easy: {{ recipe.is_easy }}</h5>
+
+</div>
+
+<div class="horizontal"></div>
+{% endblock %}

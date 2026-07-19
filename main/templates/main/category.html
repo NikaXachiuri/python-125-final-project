@@ -1,0 +1,170 @@
+{% extends "main/base.html" %}
+{% block content %}
+    <style>
+        body{
+            padding-top: 0;
+            background-position: center -500px;
+            background-image: url("https://cdn.vectorstock.com/i/500p/87/77/white-subway-tile-wall-pattern-vector-56288777.jpg");
+            background-size: cover;
+            margin: 0;
+        }
+
+        .table{
+            background-image: url("https://img.magnific.com/free-vector/detailed-wood-texture-background_1048-11802.jpg");
+            margin: 0 auto;
+            width: 1000px;
+            height: 2200px;
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            position: relative;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            top: 0px;
+            border: 9px solid saddlebrown;
+        }
+
+        h1{
+            text-align: center;
+            font-style: italic;
+            font-size: 150px;
+            position: relative;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: -70px;
+        }
+
+        .option{
+            background-color: antiquewhite;
+            width: 300px;
+            height: 750px;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .option a{
+            display: flex;
+            justify-content: center;
+        }
+
+        .parent{
+            display: grid;
+            grid-template-columns: repeat(2, 300px);
+            gap: 150px;
+            justify-content: center;
+            position: relative;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 400px
+        }
+
+        h3{
+            text-align: center;
+            position: relative;
+            top: -10px;
+            font-size: 30px;
+        }
+
+        .button{
+            position: relative;
+            top: 470px;
+            width: 150px;
+            height: 150px;
+            border: 10px solid black;
+            border-radius: 50%;
+            border-style: dashed;
+            background-color: rgb(75, 43, 1);
+            position: absolute;
+        }
+
+        .food{
+            width: 180px;
+            height: 150px;
+            position: relative;
+            z-index: 3;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 100px;
+            border-radius: 20px;
+            border: 7px solid rgb(26, 36, 6);
+        }
+
+        .calo{
+            position: absolute;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            font-size: 25px;
+            font-style: italic;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 220px;
+        }
+
+        .lcal{
+            position: absolute;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            font-size: 25px;
+            font-style: italic;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 220px;
+        }
+
+        .see{
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            position: relative;
+            top: 420px;
+        }
+
+        .add{
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            position: relative;
+            top: 430px;
+            background-color: greenyellow;
+        }
+
+
+    </style>
+
+<div class="table">
+    <h1>{{ category.name }}</h1>
+    <div class="parent">
+    {% for recipe in recipes %}
+        <div class="option">
+            <h3>{{ recipe.title }}</h3>
+            <h4 class="calo">CALORIES: {{ recipe.calories }}KCAL</h4>
+            <h4 class="lcal">"IT'S LOW IN CALORIES": {{ recipe.is_low_calorie }}</h4>
+            <img class="food" src="{{ recipe.image.url }}">
+            <p></p>
+            <a href="{% url 'recipe' recipe.id %}">
+                <img class="button" src="https://cdn-icons-png.flaticon.com/512/576/576038.png">
+            </a>
+            <a href="{% url 'reviews' %}">
+                <button class="see">SEE REVIEWS</button>
+            </a>
+            <a href="{% url 'review' recipe.id %}">
+                <button class="add">ADD YOUR REVIEW</button>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
