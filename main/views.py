@@ -46,7 +46,7 @@ def review(request, id):
             new_review.recipe = recipe
             new_review.save()
 
-            return redirect("reviews")
+            return redirect("reviews", id=recipe.id)
 
     else:
         form = ReviewForm()
@@ -60,8 +60,9 @@ def review(request, id):
         }
     )
 
-def reviews(request):
-    reviews = Review.objects.all()
+def reviews(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+    reviews = Review.objects.filter(recipe=recipe)
     return render(
         request,
         "main/reviews.html",
@@ -72,9 +73,10 @@ def reviews(request):
 
 def dele(request, id):
     review = get_object_or_404(Review, id=id)
+    recipe_id = review.recipe.id
     review.delete()
     
-    return redirect("reviews")
+    return redirect("reviews", id=recipe_id)
 
 def edit(request, id):
     review = get_object_or_404(Review, id=id)
@@ -82,7 +84,7 @@ def edit(request, id):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            return redirect("reviews")
+            return redirect("reviews", id=review.recipe.id)
         
     else:
         form = ReviewForm(instance=review)

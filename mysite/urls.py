@@ -26,7 +26,7 @@ urlpatterns = [
     path("category/<int:id>/", category, name='category'),
     path("recipe/<int:id>/", recipe, name='recipe'),
     path("review/<int:id>/", review, name='review'),
-    path("reviews/", reviews, name='reviews'),
+    path("reviews/<int:id>/", reviews, name='reviews'),
     path("review/edit/<int:id>/", edit, name='edit'),
     path("review/delete/<int:id>/", dele, name='dele'),
 ]

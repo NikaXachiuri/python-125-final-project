@@ -157,7 +157,7 @@
             <a href="{% url 'recipe' recipe.id %}">
                 <img class="button" src="https://cdn-icons-png.flaticon.com/512/576/576038.png">
             </a>
-            <a href="{% url 'reviews' %}">
+            <a href="{% url 'reviews' recipe.id %}">
                 <button class="see">SEE REVIEWS</button>
             </a>
             <a href="{% url 'review' recipe.id %}">
