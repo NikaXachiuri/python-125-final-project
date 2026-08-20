@@ -38,7 +38,7 @@ def recipe(request, id):
     )
 
 def review(request, id):
-    recipe = get_object_or_404(Review, id=id)
+    recipe = get_object_or_404(Recipe, id=id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():

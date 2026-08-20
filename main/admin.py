@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Category, Tag, Recipe, Review
+from .models import Category, Recipe, Review
 
 
 admin.site.register(Category)
-admin.site.register(Tag)
 class ReviewInLine(admin.TabularInline):
     model = Review
     extra = 1

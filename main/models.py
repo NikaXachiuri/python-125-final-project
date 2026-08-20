@@ -11,12 +11,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-class Tag(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-    
 class Recipe(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -30,7 +24,6 @@ class Recipe(models.Model):
     is_low_calorie = models.BooleanField(default=False)
     is_healthy = models.BooleanField(default=False)
     is_easy = models.BooleanField(default=False)
-    tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE
