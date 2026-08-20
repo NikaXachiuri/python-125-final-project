@@ -14,7 +14,7 @@ def home(request):
  )
 
 def category(request, id):
-    category = Category.objects.get(id=id)
+    category = get_object_or_404(Category, id=id)
     recipes = Recipe.objects.filter(category=category)
 
     return render(
@@ -27,7 +27,7 @@ def category(request, id):
     )
 
 def recipe(request, id):
-    recipe = Recipe.objects.get(id=id)
+    recipe = get_object_or_404(Recipe, id=id)
 
     return render(
         request,
@@ -38,7 +38,7 @@ def recipe(request, id):
     )
 
 def review(request, id):
-    recipe = Recipe.objects.get(id=id)
+    recipe = get_object_or_404(Review, id=id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():

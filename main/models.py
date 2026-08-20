@@ -40,7 +40,7 @@ class Recipe(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse("Ingredients", args=[self.id])
+        return reverse("recipe", args=[self.id])
     
     def healthy(self):
         return self.is_healthy
